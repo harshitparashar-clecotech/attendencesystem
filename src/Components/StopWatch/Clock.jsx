@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-function Clock(){
+import { useState, useEffect } from "react";
+function Clock() {
   const [date, setDate] = useState(new Date());
-  
+
   function refreshClock() {
     setDate(new Date());
   }
@@ -11,10 +11,6 @@ function Clock(){
       clearInterval(timerId);
     };
   }, []);
-  return (
-    <span>
-      {date.toLocaleTimeString('en-US')}
-    </span>
-  );
+  return <span>{date.toLocaleTimeString("en-US")}</span>;
 }
 export default Clock;
