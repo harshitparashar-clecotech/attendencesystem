@@ -1,0 +1,48 @@
+.stopWatch {
+  height: 20rem;
+  width: 100%;
+  padding: 1.5rem;
+  border-radius: 0.2rem;
+  box-shadow: 0px 0px 10px 0px gray;
+  background-color: $white;
+  .attendenceHeading {
+    font-size: 1rem;
+    font-weight: 600;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 0.5rem;
+  }
+  .dateContainer {
+    margin-top: 1.5rem;
+    .date {
+      span {
+        margin-right: 0.3rem;
+      }
+    }
+  }
+  .timer {
+    .digits {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+    .hrs {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-left: 0.5rem;
+    }
+  }
+  .checkIn-Container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .checkIn{
+      font-size: 0.75rem;
+      color:$success;
+    }
+    .checkOut{
+      font-size: 0.75rem;
+      color: $primary;
+    }
+
+  }
+}

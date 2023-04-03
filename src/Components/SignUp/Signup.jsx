@@ -43,7 +43,7 @@ export default function Signup() {
 
   return (
     <>
-      <div className="container">
+      <div className="container mt-lg">
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="name" className="form-label">

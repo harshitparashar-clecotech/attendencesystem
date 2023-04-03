@@ -1,0 +1,21 @@
+.checkIn-btn{
+  width: 8rem;
+  text-transform:capitalize !important;
+  background-color: $primary !important;
+}
+
+.checkOut-btn{
+  width: 8rem;
+  text-transform:capitalize !important;
+  background-color: $success !important;
+  color: $white !important;
+  border-color: $success !important;
+}
+
+.break-btn{
+  width: 8rem;
+  text-transform:capitalize !important;
+  
+  color: $secondary !important;
+  border-color: $secondary !important;
+}

@@ -1,14 +1,36 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ControlButtons from "./ControlButtons";
+import { Box, Stack, Typography } from "@mui/material";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import WatchLaterOutlinedIcon from "@mui/icons-material/WatchLaterOutlined";
+import Clock from "./Clock";
 
 function StopWatch() {
   const [isActive, setIsActive] = useState(false);
-  const [isPaused, setIsPaused] = useState(true);
+  const [isPaused, setIsPaused] = useState(false);
   const [time, setTime] = useState(0);
   const [hours, setHours] = useState();
   const [minutes, setMinutes] = useState();
   const [seconds, setSeconds] = useState();
+
+  const [endtimeforme, setendTime] = useState();
+
+  const monthList = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
   //   const [details, setDetails] = useState(null);
 
   //   const getUserGeolocationDetails = async () => {
@@ -23,7 +45,7 @@ function StopWatch() {
   const [longi, setLongi] = useState("");
   const [lati, setLati] = useState("");
   const [location, setLocation] = useState("");
-  React.useEffect(() => {
+  useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
       setLati(position.coords.latitude);
       setLongi(position.coords.longitude);
@@ -47,11 +69,11 @@ function StopWatch() {
     setSeconds(Math.floor((time % 6000) / 100));
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     handleTime();
     // getUserGeolocationDetails();
   });
-  React.useEffect(() => {
+  useEffect(() => {
     let interval = null;
     if (isActive && isPaused === false) {
       interval = setInterval(() => {
@@ -74,19 +96,17 @@ function StopWatch() {
   };
 
   let newDate = new Date();
+  // let currentTime = newDate.toLocaleTimeString("en-US");
   let day = newDate.getDate();
-  let month = newDate.getMonth() + 1;
+  let month = monthList[newDate.getMonth()];
   let year = newDate.getFullYear();
-
-  const handlePauseResume = () => {
-    setIsPaused(!isPaused);
-  };
 
   const handleEnd = async (e) => {
     setIsActive(false);
     setIsPaused(false);
     const currentend = new Date();
     const endtime = currentend.toLocaleTimeString("en-US");
+    setendTime(currentend.toLocaleTimeString("en-US"));
 
     e.preventDefault();
 
@@ -104,30 +124,78 @@ function StopWatch() {
         date: { day: day, month: month, year: year },
       }),
     });
+    setTime(0);
+  };
+
+  const handlePauseResume = () => {
+    setIsPaused(!isPaused);
   };
 
   return (
-    <div className="stop-watch">
-      <div className="timer">
+    <Box className="stopWatch">
+      <Typography className="attendenceHeading">Attendence</Typography>
+      <Stack
+        direction={{ xs: "column", sm: "row" }}
+        justifyContent="space-between"
+        alignItems="center"
+        sx={{ width: "100%" }}
+        className="dateContainer"
+      >
+        <Box className="date center">
+          <CalendarMonthIcon className="icon-color" />
+          <span>{day}</span>
+          <span>{month}</span>
+          <span>{year}</span>
+        </Box>
+        <Box className="center">
+          <WatchLaterOutlinedIcon className="icon-color" />
+          {/* <Box>{currentTime}</Box> */}
+          <Clock/>
+        </Box>
+      </Stack>
+
+      <Box className="timer center mt-sm">
         <span className="digits">{Math.floor(time / 360000)}:</span>
         <span className="digits">
           {"0" + Math.floor((time % 360000) / 6000)}:
         </span>
-        <span className="digits mili-sec">
-          {"0" + Math.floor((time % 6000) / 100)}
-        </span>
-      </div>
+        <span className="digits">{Math.floor((time % 6000) / 100)}</span>
+        <span className="hrs">Hrs</span>
+      </Box>
 
+      <Box className="center">
+        <LocationOnIcon className="icon-color" />
+        {location.name}
+      </Box>
+      <Stack
+        direction={{ xs: "column", sm: "row" }}
+        justifyContent="space-between"
+        alignItems="center"
+        sx={{ width: "100%" }}
+      >
+        {!timecurrent == "" ? (
+          <>
+            <Box className="checkIn-Container">
+              <Box className="center mt-sm">{timecurrent}</Box>
+              <Box className="checkIn">Check In</Box>
+            </Box>
+          </>
+        ) : null}
+        {!endtimeforme == "" ? (
+          <Box className="checkIn-Container">
+            <Box className="center mt-sm">{endtimeforme}</Box>
+            <Box className="checkOut">Check Out</Box>
+          </Box>
+        ) : null}
+      </Stack>
       <ControlButtons
         active={isActive}
         isPaused={isPaused}
         handleStart={handleStart}
-        handlePauseResume={handlePauseResume}
         handleEnd={handleEnd}
+        handlePauseResume={handlePauseResume}
       />
-
-      {location?.name}
-    </div>
+    </Box>
   );
 }
 

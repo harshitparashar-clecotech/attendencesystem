@@ -1,0 +1,16 @@
+.landingPage {
+  .List-container {
+    height: 20rem;
+    width: 100%;
+    padding: 1.5rem;
+    border-radius: 0.2rem;
+    box-shadow: 0px 0px 10px 0px gray;
+    background-color: $white;
+    overflow: scroll;
+    .list{
+      background-color: #f6f6f6;
+      margin-bottom: 0.5rem;
+      padding: 0.5rem;
+    }
+  }
+}
