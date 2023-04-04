@@ -1,13 +1,30 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function Signup() {
+  const [longi, setLongi] = useState("");
+  const [lati, setLati] = useState("");
+  const [location, setLocation] = useState("");
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      setLati(position.coords.latitude);
+      setLongi(position.coords.longitude);
+    });
+
+    axios
+      .get(
+        `http://api.weatherapi.com/v1/current.json?key=1fa60f05a70941ae95a100008230204&q=${lati},${longi}`
+      )
+      .then((res) => setLocation(res.data.location));
+  }, [longi, lati]);
+
   const [credentials, setCredentials] = useState({
     name: "",
     emp: "",
     password: "",
-    geolocation: "",
   });
 
   const navigate = useNavigate();
@@ -22,7 +39,7 @@ export default function Signup() {
         name: credentials.name,
         emp: credentials.emp,
         password: credentials.password,
-        location: credentials.geolocation,
+        location: location.name,
       }),
     });
     const json = await response.json();
@@ -83,18 +100,7 @@ export default function Signup() {
               onChange={onChange}
             />
           </Box>
-          <Box className="mt-sm">
-            <TextField
-              variant="outlined"
-              label="Location"
-              fullWidth
-              type="text"
-              className="form-control"
-              name="geolocation"
-              value={credentials.geolocation}
-              onChange={onChange}
-            />
-          </Box>
+
           <Box className="center mt-sm">
             <Button variant="outlined" type="submit" className="checkIn-btn">
               Submit

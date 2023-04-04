@@ -1,0 +1,37 @@
+.organisation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .Heading {
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: $primary;
+    text-align: center;
+  }
+  .member-list {
+    box-shadow: 0px 0px 10px 0px gray;
+    margin-bottom: 1rem;
+    background-color: $white;
+    padding: 1rem;
+    font-size: 0.875rem;
+    .Avatar-bg {
+      background-color: $secondary;
+    }
+    .Location {
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+    .emp_id_heading{
+      font-weight: 600;
+      font-size: 0.75rem;
+    }
+    .emp_id{
+      margin-left: 0.5rem;
+      font-size: 0.875rem;
+    }
+  }
+}

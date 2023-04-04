@@ -21,14 +21,19 @@ router.post(
     }
     const salt = await bcrypt.genSalt(10);
     let secPassword = await bcrypt.hash(req.body.password, salt);
-
+    let emp = req.body.emp;
     try {
-      await User.create({
-        name: req.body.name,
-        password: secPassword,
-        emp: req.body.emp,
-        location: req.body.location,
-      });
+      const data = await User.findOne({ emp });
+      if (data) {
+        return res.status(400).json({ errors: "Credentials already present" });
+      } else {
+        await User.create({
+          name: req.body.name,
+          password: secPassword,
+          emp: req.body.emp,
+          location: req.body.location,
+        });
+      }
       res.json({ success: true });
     } catch (error) {
       console.log(error);
@@ -88,11 +93,19 @@ router.post(
   }
 );
 
-
-
 router.get("/userData", async (req, res) => {
   try {
     const data = await User.findById(global_id);
+    res.send({ data: data });
+  } catch (error) {
+    console.log(error.message);
+    res.send("Server Error");
+  }
+});
+
+router.get("/orgination", async (req, res) => {
+  try {
+    const data = await User.find();
     res.send({ data: data });
   } catch (error) {
     console.log(error.message);

@@ -5,6 +5,7 @@ import Home from "./Components/LandingPages/Home";
 import AttendanceTracker from "./Components/LandingPages/AttendanceTracker";
 import Navbar from "./Components/Navbar/Navbar";
 import { createContext, useState } from "react";
+import OrganisationMenber from "./Components/LandingPages/OrganisationMember";
 
 export const UserContext = createContext();
 function App() {
@@ -22,7 +23,7 @@ function App() {
             element={<AttendanceTracker />}
           ></Route>
           <Route path="/signup" element={<Signup />}></Route>
-          
+          <Route path="/orgination" element={<OrganisationMenber/>}></Route>
           <Route path="/" element={<Login />}></Route>
         </Routes>
       </BrowserRouter>

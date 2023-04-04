@@ -47,7 +47,6 @@ const Login = () => {
 
   return (
     <Box>
-
       <Box className="mt-lg Login">
         <Box className="Login-container">
           <form onSubmit={handleSubmit}>
@@ -87,7 +86,7 @@ const Login = () => {
                   type="submit"
                   className="checkIn-btn"
                 >
-                  Sign IN
+                  Sign In
                 </Button>
                 <Button component={Link} to="/signup" className="New-User">
                   New User ?

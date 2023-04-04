@@ -127,6 +127,9 @@ function Navbar() {
                 >
                   Attendence Tracker
                 </Box>
+                <Box component={Link} to="/orgination" className="nav-Links">
+                Orgination
+                </Box>
               </>
             ) : null}
           </Box>
@@ -134,7 +137,7 @@ function Navbar() {
           {localStorage.getItem("authToken") ? (
             <Box sx={{ flexGrow: 0 }}>
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt={data?.name} src="/static/images/avatar/2.jpg" />
               </IconButton>
 
               <Menu
