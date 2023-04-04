@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useContext } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -13,6 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../App";
 
 const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -35,6 +36,7 @@ function Navbar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+  const { LoginUser } = useContext(UserContext);
 
   return (
     <AppBar position="fixed" sx={{ backgroundColor: "#fff" }}>
@@ -90,13 +92,27 @@ function Navbar() {
             ClecoTech
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } ,paddingLeft:"2rem"}}>
-            <Box component={Link} to="/landing_page" className="nav-Links">
-              Home
-            </Box>
-            <Box component={Link} to="/attendenceTracker" className="nav-Links">
-              Attendence Tracker
-            </Box>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", md: "flex" },
+              paddingLeft: "2rem",
+            }}
+          >
+            {LoginUser ? (
+              <>
+                <Box component={Link} to="/landing_page" className="nav-Links">
+                  Home
+                </Box>
+                <Box
+                  component={Link}
+                  to="/attendenceTracker"
+                  className="nav-Links"
+                >
+                  Attendence Tracker
+                </Box>
+              </>
+            ) : null}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>

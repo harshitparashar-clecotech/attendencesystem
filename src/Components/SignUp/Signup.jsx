@@ -1,3 +1,4 @@
+import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -9,7 +10,7 @@ export default function Signup() {
     geolocation: "",
   });
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await fetch("http://localhost:4000/api/createUser", {
@@ -30,7 +31,7 @@ export default function Signup() {
       alert("Enter valid credentials");
     }
     if (json.success) {
-      navigate("/")
+      navigate("/");
     }
   };
 
@@ -42,62 +43,65 @@ export default function Signup() {
   };
 
   return (
-    <>
-      <div className="container mt-lg">
+    <Box className="mt-lg Signup">
+      <Box className="Signup-container">
         <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label htmlFor="name" className="form-label">
-              Name
-            </label>
-            <input
+          <Typography className="Heading">Sign Up</Typography>
+          <Box className="mt-sm">
+            <TextField
+              variant="outlined"
+              label="User Name"
               type="text"
               name="name"
+              fullWidth
               value={credentials.name}
               onChange={onChange}
               className="form-control"
             />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="emp" className="form-label">
-              Employee Id
-            </label>
-            <input
+          </Box>
+          <Box className="mt-sm">
+            <TextField
+              variant="outlined"
+              label="Employe Id"
               type="text"
+              fullWidth
               className="form-control"
               name="emp"
               value={credentials.emp}
               onChange={onChange}
             />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="password" className="form-label">
-              Password
-            </label>
-            <input
+          </Box>
+          <Box className="mt-sm">
+            <TextField
+              variant="outlined"
+              label="Password"
               type="password"
+              fullWidth
               className="form-control"
               name="password"
               value={credentials.password}
               onChange={onChange}
             />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="geolocation" className="form-label">
-              Address
-            </label>
-            <input
+          </Box>
+          <Box className="mt-sm">
+            <TextField
+              variant="outlined"
+              label="Location"
+              fullWidth
               type="text"
               className="form-control"
               name="geolocation"
               value={credentials.geolocation}
               onChange={onChange}
             />
-          </div>
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
+          </Box>
+          <Box className="center mt-sm">
+            <Button variant="outlined" type="submit" className="checkIn-btn">
+              Submit
+            </Button>
+          </Box>
         </form>
-      </div>
-    </>
+      </Box>
+    </Box>
   );
 }

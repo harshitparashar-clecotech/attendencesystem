@@ -1,9 +1,14 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { Stack } from "@mui/material";
-import React from "react";
+import React,{useContext} from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { UserContext} from "../../App";
+
 const Login = () => {
+
+  const {setLogin} = useContext(UserContext);
+  
   const [credentials, setCredentials] = useState({
     emp: "",
     password: "",
@@ -29,7 +34,9 @@ const Login = () => {
       localStorage.setItem("authToken", json.authToken);
       localStorage.setItem("UserValue", credentials.emp);
       console.log(localStorage.getItem("authToken"));
+      setLogin(true)
       navigate("/landing_page");
+      
     }
   };
 
@@ -78,9 +85,9 @@ const Login = () => {
               <Button variant="outlined" type="submit" className="checkIn-btn">
                 Sign IN
               </Button>
-              <Link to="/signup" className="New-User">
+              <Button component={Link} to="/signup" className="New-User">
                 New User ?
-              </Link>
+              </Button>
             </Stack>
           </Box>
         </form>
