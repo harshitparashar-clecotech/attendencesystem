@@ -13,15 +13,17 @@ function App() {
   return (
     <UserContext.Provider value={{ LoginUser, setLogin }}>
       <BrowserRouter>
+
         <Navbar />
         <Routes>
-          <Route path="/" element={<Login />}></Route>
+          <Route path="/loginPage" element={<Home />}></Route>
           <Route
             path="/attendenceTracker"
             element={<AttendanceTracker />}
           ></Route>
           <Route path="/signup" element={<Signup />}></Route>
-          <Route path="/landing_page" element={<Home />}></Route>
+          
+          <Route path="/" element={<Login />}></Route>
         </Routes>
       </BrowserRouter>
     </UserContext.Provider>

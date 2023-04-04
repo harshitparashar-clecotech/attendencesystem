@@ -12,7 +12,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../App";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -45,7 +45,14 @@ function Navbar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-  const { LoginUser } = useContext(UserContext);
+  const { LoginUser, setLogin } = useContext(UserContext);
+
+  const navigate = useNavigate();
+  const logout = () => {
+    localStorage.removeItem("authToken");
+
+    navigate("/");
+  };
 
   return (
     <AppBar position="fixed" sx={{ backgroundColor: "#fff" }}>
@@ -108,9 +115,9 @@ function Navbar() {
               paddingLeft: "2rem",
             }}
           >
-            {LoginUser ? (
+            {localStorage.getItem("authToken") ? (
               <>
-                <Box component={Link} to="/landing_page" className="nav-Links">
+                <Box component={Link} to="/loginPage" className="nav-Links">
                   Home
                 </Box>
                 <Box
@@ -124,7 +131,7 @@ function Navbar() {
             ) : null}
           </Box>
 
-          {LoginUser ? (
+          {localStorage.getItem("authToken") ? (
             <Box sx={{ flexGrow: 0 }}>
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
@@ -154,6 +161,13 @@ function Navbar() {
                     <Typography className="emp_data">
                       Emp. Name : <span>{data?.name}</span>
                     </Typography>
+                    <Button
+                      onClick={logout}
+                      variant="outlined"
+                      className="checkIn-btn mt-sm"
+                    >
+                      Logout
+                    </Button>
                   </Box>
                 </MenuItem>
               </Menu>
