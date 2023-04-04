@@ -1,23 +1,12 @@
-import React, { useEffect, useState } from "react";
-import Navbar from "../Navbar/Navbar";
-import axios from "axios";
+import React from "react";
 import StopWatch from "../StopWatch/StopWatch";
 import { Box, Container, Grid } from "@mui/material";
 
 const Home = () => {
-  const [data, setData] = useState("undefined");
-
-  
-  useEffect(() => {
-    axios({ url: "http://localhost:4000/api/userData" }).then((res) => {
-      setData(res.data.data);
-    });
-  }, []);
-
-
+ 
   return (
     <div>
-      {/* <Navbar data={data} /> */}
+     
       <Container>
         <Box className="mt-lg landingPage">
           <Grid container spacing={2}>

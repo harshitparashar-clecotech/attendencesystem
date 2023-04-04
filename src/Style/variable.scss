@@ -15,22 +15,22 @@ $grid-breakpoints: (
 
 $primary: #f3746d;
 $backdrop-primary: rgba(48, 37, 87, 0.4);
-$secondary: #002A4B ;
+$secondary: #002a4b;
 $error: #c5291c;
 $gray: #c3c0ce;
-$light-gray: #8B8B8B;
+$light-gray: #8b8b8b;
 $dark-gray: #656565;
 $white: #ffffff;
 $black: #000000;
 $success: #418b46;
-$warning: #FF0000;
-$field-background: #F9F9F9;
-$linear-background: transparent linear-gradient(90deg, #005395 0%, #002A4B 100%) 0% 0% no-repeat padding-box;
-$yellow: #FFC400;
-$skyblue: #236AA31A;
-$light-blue: #0090FF;
-$light-pink: #FF000008;
-
+$warning: #ff0000;
+$field-background: #f9f9f9;
+$linear-background: transparent linear-gradient(90deg, #005395 0%, #002a4b 100%)
+  0% 0% no-repeat padding-box;
+$yellow: #ffc400;
+$skyblue: #236aa31a;
+$light-blue: #0090ff;
+$light-pink: #ff000008;
 
 $theme-colors: (
   "primary": $primary,
@@ -41,24 +41,22 @@ $theme-colors: (
   "lightGray": $light-gray,
   "darkGray": $dark-gray,
   "white": $white,
-  "black":$black,
+  "black": $black,
   "success": $success,
   "warning": $warning,
-  "field-background":$field-background,
-  "linear-background":$linear-background,
-  "yellow":$yellow,
-  "skyblue":$skyblue,
-  "light-blue":$light-blue,
-  "light-pink":$light-pink,
+  "field-background": $field-background,
+  "linear-background": $linear-background,
+  "yellow": $yellow,
+  "skyblue": $skyblue,
+  "light-blue": $light-blue,
+  "light-pink": $light-pink,
 );
 
-
-.center{
+.center {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 
 // // Typography
 // //
@@ -71,7 +69,7 @@ $font-family-base: $font-family-sans-serif !default;
 
 $font-size-base: 1rem !default; // Assumes the browser default, typically `16px`
 $font-size-lg: ($font-size-base * 1.25) !default;
-$font-size-sm: ( $font-size-base * 0.875) !default;
+$font-size-sm: ($font-size-base * 0.875) !default;
 
 $font-weight-lighter: lighter !default;
 $font-weight-light: 300 !default;
@@ -120,49 +118,60 @@ $header-height-xs: 5.875rem;
 
 //button
 
-$button-height : 3.125rem;
-$button-height-xs : 2.75rem;
+$button-height: 3.125rem;
+$button-height-xs: 2.75rem;
 
-//space from top 
+//space from top
 $space-from-top: 6.874rem;
 $space-from-top-xs: 5.874rem;
 
 // box-shadow
 $box-shadow: 0rem 0.1875rem 0.375rem #00000029;
 
-.mt-sm{
+.mt-sm {
   margin-top: 0.875rem !important;
 }
 
-.mt-lg{
+.mt-lg {
   margin-top: 4.5rem;
 }
 
-.icon-color{
+.icon-color {
   color: $primary !important;
   margin-right: 0.5rem;
 }
-.icon-color-sm{
+.icon-color-sm {
   color: $primary !important;
   margin-right: 0.2rem;
   font-size: 0.75rem;
 }
-.icon-color-white{
+.icon-color-white {
   color: $white !important;
   margin-right: 0.5rem;
   font-size: 0.75rem;
 }
 
-.nav-Links{
+.nav-Links {
   color: $black;
   margin-right: 1rem;
   text-decoration: none;
-  font-size: 0.875rem ;
+  font-size: 0.875rem;
   font-weight: 600;
-  &:active{
+  &:active {
     color: $primary;
   }
-  &:focus{
+  &:focus {
     color: $primary;
+  }
+}
+
+.emp_data {
+  font-size: 0.75rem !important;
+  background-color: #f2f2f2;
+  padding: 0.5rem;
+  font-weight: 600 !important;
+  margin-top: 0.5rem !important;
+  span{
+    font-weight: 400 !important;
   }
 }

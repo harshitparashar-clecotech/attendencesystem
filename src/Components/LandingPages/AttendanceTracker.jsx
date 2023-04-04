@@ -24,7 +24,7 @@ const AttendanceTracker = () => {
                 <Box className="list">
                   {times?.duration?.hours < 4 ? (
                     <Box className="lable lable-absent">Absent</Box>
-                  ) : times?.duration?.hours <= 8 &&
+                  ) : times?.duration?.hours < 8 &&
                     times?.duration?.hours >= 4 ? (
                     <Box className="lable lable-half">Half Day</Box>
                   ) : (

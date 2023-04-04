@@ -4,11 +4,12 @@ import Login from "./Components/SignUp/Login";
 import Home from "./Components/LandingPages/Home";
 import AttendanceTracker from "./Components/LandingPages/AttendanceTracker";
 import Navbar from "./Components/Navbar/Navbar";
-import { createContext,useState } from "react";
+import { createContext, useState } from "react";
 
 export const UserContext = createContext();
 function App() {
   const [LoginUser, setLogin] = useState(false);
+
   return (
     <UserContext.Provider value={{ LoginUser, setLogin }}>
       <BrowserRouter>

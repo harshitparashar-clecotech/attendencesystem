@@ -88,6 +88,8 @@ router.post(
   }
 );
 
+
+
 router.get("/userData", async (req, res) => {
   try {
     const data = await User.findById(global_id);
@@ -105,8 +107,8 @@ router.post("/time", async (req, res) => {
       date: req.body.date,
       location: req.body.location,
       emp: req.body.emp,
-      duration:req.body.duration,
-      endtime:req.body.endtime,
+      duration: req.body.duration,
+      endtime: req.body.endtime,
     });
     res.json({ success: true });
   } catch (error) {
@@ -118,7 +120,7 @@ router.post("/time", async (req, res) => {
 router.get("/userTime", async (req, res) => {
   try {
     let userTime = global_emp;
-    const data = await Timer.find({ emp:userTime });
+    const data = await Timer.find({ emp: userTime });
     console.log("data", data);
     res.send({ data: data });
   } catch (error) {
