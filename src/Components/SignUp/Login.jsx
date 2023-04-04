@@ -1,3 +1,5 @@
+import { Box, Button, TextField, Typography } from "@mui/material";
+import { Stack } from "@mui/material";
 import React from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -39,42 +41,51 @@ const Login = () => {
   };
 
   return (
-    <div className="mt-lg">
-      <div className="container">
+    <Box className="mt-lg Login">
+      <Box className="Login-container">
         <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label htmlFor="emp" className="form-label">
-              Employee Id
-            </label>
-            <input
+          <Typography className="Heading">Login</Typography>
+          <Box className="mt-sm">
+            <TextField
               type="text"
+              label="Employee Id"
               className="form-control"
               name="emp"
+              fullWidth
               value={credentials.emp}
               onChange={onChange}
             />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="password" className="form-label">
-              Password
-            </label>
-            <input
+          </Box>
+          <Box className="mt-sm">
+            <TextField
+              fullWidth
               type="password"
+              label="Password"
               className="form-control"
               name="password"
               value={credentials.password}
               onChange={onChange}
             />
-          </div>
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
-          <Link to="/signup" className="m-3 btn btn">
-            New User
-          </Link>
+          </Box>
+          <Box className="mt-sm">
+            <Stack
+              direction={{ xs: "column", sm: "row" }}
+              justifyContent="space-between"
+              alignItems="center"
+              sx={{ width: "100%" }}
+              className="dateContainer"
+            >
+              <Button variant="outlined" type="submit" className="checkIn-btn">
+                Sign IN
+              </Button>
+              <Link to="/signup" className="New-User">
+                New User ?
+              </Link>
+            </Stack>
+          </Box>
         </form>
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };
 

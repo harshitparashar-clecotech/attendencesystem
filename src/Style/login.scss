@@ -1,0 +1,23 @@
+.Login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 4rem);
+  .Login-container{
+    background-color: $white;
+    padding: 1rem;
+    .Heading {
+      margin-bottom: 2rem;
+      margin-top: 1rem;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: $primary;
+      text-align: center;
+    }
+  }
+  .New-User{
+text-decoration: none;
+text-align: end;
+font-size: 0.75rem;
+  }
+}
